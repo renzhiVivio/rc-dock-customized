@@ -51,11 +51,10 @@ export class TabCache {
             }
             let panelElement = findParentPanel(this._ref);
             let tabGroup = this.context.getGroup(this.data.group);
-            console.log('dragstartEsTab', tabGroup,this.data,tabGroup.draggable(this.data))
             if(tabGroup.draggable(this.data)){
                 let [panelWidth, panelHeight] = getFloatPanelSize(panelElement, tabGroup);
-            e.setData({ tab: this.data, panelSize: [panelWidth, panelHeight], tabGroup: this.data.group }, this.context.getDockId());
-            e.startDrag(this._ref.parentElement, this._ref.parentElement);
+                e.setData({ tab: this.data, panelSize: [panelWidth, panelHeight], tabGroup: this.data.group }, this.context.getDockId());
+                e.startDrag(this._ref.parentElement, this._ref.parentElement);
             }
         };
         this.onDragOver = (e) => {

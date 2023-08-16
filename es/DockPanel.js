@@ -56,10 +56,9 @@ export class DockPanel extends React.PureComponent {
                 this.onFloatPointerDown();
             }
             else {
-                let tabGroup = this.context.getGroup(panelData.group);
-            console.log('dragstartEsPanel', tabGroup,panelData,tabGroup.draggable(panelData) && panelData.tabs.length===1)
+            let tabGroup = this.context.getGroup(panelData.group);
             if(tabGroup.draggable(panelData) && panelData.tabs.length===1){
-                    let [panelWidth, panelHeight] = getFloatPanelSize(this._ref, tabGroup);
+                let [panelWidth, panelHeight] = getFloatPanelSize(this._ref, tabGroup);
                 event.setData({ panel: panelData, panelSize: [panelWidth, panelHeight], tabGroup: panelData.group }, dockId);
                 event.startDrag(null);
                 }
