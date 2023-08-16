@@ -3,6 +3,7 @@ import * as React from "react";
 export const defaultGroup = {
     floatable: true,
     maximizable: true,
+    draggable:(data)=>{return true},
 };
 /** @ignore */
 export const placeHolderStyle = 'place-holder';
