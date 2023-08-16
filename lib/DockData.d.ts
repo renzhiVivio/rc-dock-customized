@@ -69,6 +69,10 @@ export interface TabGroup {
      * Override the default `moreIcon`
      */
     moreIcon?: React.ReactNode;
+    /**
+     * default true, when false, the tab cannot drag
+     */
+    draggable?: (panel: PanelData) => boolean;
 }
 /** @ignore */
 export declare const defaultGroup: TabGroup;
