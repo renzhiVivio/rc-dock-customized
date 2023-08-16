@@ -8,6 +8,34 @@ let tab = {
   closable: true,
 };
 
+const groups = {
+  'general': {
+    floatable: true,
+    closable: false,
+    draggable:(panelData) => {
+      if(panelData.activeId)return !panelData.activeId.startsWith('test') 
+      return !panelData.id.startsWith('test') 
+    },
+    panelExtra: (panelData, context) => {
+
+      let buttons = [];
+      if (panelData.parent.mode !== 'window') {
+        buttons.push(
+          <span className='my-panel-extra-btn' key='maximize'
+                title={panelData.parent.mode === 'maximize' ? 'Restore' : 'Maximize'}
+                onClick={() => context.dockMove(panelData, null, 'maximize')}>
+          {panelData.parent.mode === 'maximize' ? '▬' : '▣'}
+          </span>
+        )
+       
+      }
+     
+      return <div>{buttons}</div>
+    }
+  
+  },
+};
+
 let layout = {
     dockbox: {
       mode: 'horizontal',
@@ -17,11 +45,12 @@ let layout = {
           size: 200,
           children: [
             {
-              tabs: [{...tab, id: 't1', title: 'Tab 1'}, {...tab, id: 't2', title: 'Tab 2'}],
+              
+              tabs: [{...tab, id: 'test1', title: 'Test1',group:'general',}, {...tab, id: 't2', title: 'Test2',group:'general',}],
             },
             {
               tabs: [{
-                ...tab, id: 't3', title: 'Min Size', content: (
+                ...tab, id: 'minsize', title: 'Min Size', content: (
                   <div>
                     <p>This tab has a minimal size</p>
                     150 x 150 px
@@ -35,14 +64,16 @@ let layout = {
           size: 1000,
           tabs: [
             {
-              ...tab, id: 't5', title: 'basic demo', content: (
+              id: 'test3', title: 'Test3', content: (
                 <div>
                   This panel won't be removed from layout even when last Tab is closed
                 </div>
               ),
+              group:'general',
+
             },
-            jsxTab,
-            htmlTab,
+            {...tab, id: 't4', title: 'Test4',group:'general',},
+
           ],
           panelLock: {panelStyle: 'main'},
         },
@@ -89,7 +120,9 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <DockLayout defaultLayout={layout} style={{position: 'absolute', left: 10, top: 10, right: 10, bottom: 10}}/>
+      <DockLayout defaultLayout={layout} 
+      groups={groups}
+      style={{position: 'absolute', left: 10, top: 10, right: 10, bottom: 10}}/>
     );
   }
 }
