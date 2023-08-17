@@ -140,8 +140,8 @@ class Demo extends React.Component {
     return (
       <DockLayout defaultLayout={layout} 
       groups={groups}
-      // dropMode='edge'
-      // maxDepth={4}
+      dropMode='edge'
+      maxDepth={4}
       style={{position: 'absolute', left: 10, top: 10, right: 10, bottom: 10}}/>
     );
   }
