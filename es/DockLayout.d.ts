@@ -62,6 +62,8 @@ export interface LayoutProps {
      * use dom element as the value, or use the element's id
      */
     maximizeTo?: string | HTMLElement;
+    /** the max depth of docking */
+    maxDepth?:number;
 }
 interface LayoutState {
     layout: LayoutData;
