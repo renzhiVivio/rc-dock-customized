@@ -67,6 +67,11 @@ render() {
 | dockbox | BoxData | main dock box | empty BoxData |
 | floatbox | BoxData | main float box, children can only be PanelData  | empty BoxData |
 
+### LayoutDataProps (customized part)
+| Property | Type | Comments | Default |
+| :---: | :---: | :---: | :---: |
+| maxDepth | number | limit level of docking | optional |
+
 ### BoxData [🗎](https://ticlo.github.io/rc-dock/interfaces/dockdata.boxdata.html)
 a box is the layout element that contains other boxes or panels
 
@@ -92,6 +97,11 @@ a panel is a visiaul container with tabs button in the title bar
 | content | ReactElement &#x7c; (tab: TabData) => ReactElement | tab content | **required** |
 | closable | bool | whether tab can be closed | false |
 | group | string | tabs with different tab group can not be put in same panel, more options for the group can be defined as TabGroup in DefaultLayout.groups | |
+
+### TabGroup (customized part)
+| Property | Type | Comments | Default |
+| :---: | :---: | :---: | :---: |
+| draggable | (panel: PanelData) => boolean | control tab can draggable or not | optional |
 
 ## DockLayout API
 
