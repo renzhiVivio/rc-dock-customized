@@ -25,12 +25,16 @@ export class DockDropEdge extends React.PureComponent {
                 return;
             }
             let targetElement = panelElement;
-            for (let i = 0; i < depth; ++i) {
-                targetElement = targetElement.parentElement;
+            let panelDepth = this.getTargetDepth(panelData);
+            let maxDepth = this.context.props.maxDepth;
+            if(!maxDepth || (panelDepth < maxDepth)){
+                for (let i = 0; i < depth; ++i) {
+                    targetElement = targetElement.parentElement;
+                }
+                let panelSize = DragManager_1.DragState.getData('panelSize', dockId);
+                this.context.setDropRect(targetElement, direction, this, e, panelSize);
+                e.accept('');
             }
-            let panelSize = DragState.getData('panelSize', dockId);
-            this.context.setDropRect(targetElement, direction, this, e, panelSize);
-            e.accept('');
         };
         this.onDragLeave = (e) => {
             this.context.setDropRect(null, 'remove', this);
@@ -52,10 +56,14 @@ export class DockDropEdge extends React.PureComponent {
                     return;
                 }
                 let target = panelData;
-                for (let i = 0; i < depth; ++i) {
-                    target = target.parent;
+                let panelDepth = this.getTargetDepth(panelData);
+                let maxDepth = this.context.props.maxDepth;
+                if(!maxDepth || (panelDepth < maxDepth)){
+                    for (let i = 0; i < depth; ++i) {
+                        target = target.parent;
+                    }
+                    this.context.dockMove(source, target, direction);
                 }
-                this.context.dockMove(source, target, direction);
             }
         };
     }
@@ -148,6 +156,15 @@ export class DockDropEdge extends React.PureComponent {
             depth -= 2;
         }
         return depth;
+    }
+    getTargetDepth(data){
+        let depth = 0;
+        let tempData = data;
+        while(tempData.parent){
+            depth++;
+            tempData = tempData.parent
+        }
+        return depth
     }
     render() {
         return (React.createElement(DragDropDiv, { getRef: this.getRef, className: "dock-drop-edge", onDragOverT: this.onDragOver, onDragLeaveT: this.onDragLeave, onDropT: this.onDrop }));

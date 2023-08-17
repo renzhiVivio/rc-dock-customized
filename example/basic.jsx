@@ -101,18 +101,18 @@ let layout = {
         },
       ]
     },
-    floatbox: {
-      mode: 'float',
-      children: [
-        {
-          tabs: [
-            {...tab, id: 't9', title: 'Tab 9', content: <div>Float</div>},
-            {...tab, id: 't10', title: 'Tab 10'}
-          ],
-          x: 300, y: 150, w: 400, h: 300
-        }
-      ]
-    }
+    // floatbox: {
+    //   mode: 'float',
+    //   children: [
+    //     {
+    //       tabs: [
+    //         {...tab, id: 't9', title: 'Tab 9', content: <div>Float</div>},
+    //         {...tab, id: 't10', title: 'Tab 10'}
+    //       ],
+    //       x: 300, y: 150, w: 400, h: 300
+    //     }
+    //   ]
+    // }
   }
 ;
 if (window.innerWidth < 600) {
@@ -140,6 +140,8 @@ class Demo extends React.Component {
     return (
       <DockLayout defaultLayout={layout} 
       groups={groups}
+      // dropMode='edge'
+      // maxDepth={4}
       style={{position: 'absolute', left: 10, top: 10, right: 10, bottom: 10}}/>
     );
   }

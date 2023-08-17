@@ -123,6 +123,8 @@ export interface PanelBase {
     w?: number;
     /** float mode only */
     h?: number;
+    /** the max depth of docking */
+    maxDepth?:number;
 }
 export interface BoxBase {
     /**
