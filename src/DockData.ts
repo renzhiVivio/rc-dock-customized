@@ -166,9 +166,9 @@ export interface LayoutBase {
 }
 
 interface BoxChild extends DockDataBase {
-  parent?: BoxData;
-  widthFlex?: number;
-  heightFlex?: number;
+  parent?: BoxData | null;
+  widthFlex?: number | null;
+  heightFlex?: number | null;
 }
 
 /**

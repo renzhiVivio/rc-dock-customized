@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Filter } from "./Algorithm";
+import {Filter} from "./Algorithm";
 export interface TabGroup {
     /**
      * Whether tab can be dragged into float layer.
@@ -123,7 +123,7 @@ export interface PanelBase {
     w?: number;
     /** float mode only */
     h?: number;
-    
+
 }
 export interface BoxBase {
     /**
@@ -145,9 +145,9 @@ export interface LayoutBase {
     maxbox?: BoxBase;
 }
 interface BoxChild extends DockDataBase {
-    parent?: BoxData;
-    widthFlex?: number;
-    heightFlex?: number;
+    parent?: BoxData | null;
+    widthFlex?: number | null;
+    heightFlex?: number | null;
 }
 /**
  * a box is the layout element that contains other boxes or panels
@@ -324,4 +324,4 @@ export declare const DockContextType: React.Context<DockContext>;
 export declare const DockContextProvider: React.Provider<DockContext>;
 /** @ignore */
 export declare const DockContextConsumer: React.Consumer<DockContext>;
-export {};
+export { };
