@@ -389,7 +389,7 @@ export interface DockContext {
 }
 
 /** @ignore */
-export const DockContextType = React.createContext<DockContext>(null);
+export const DockContextType = React.createContext<DockContext | null>(null);
 /** @ignore */
 export const DockContextProvider = DockContextType.Provider;
 /** @ignore */
