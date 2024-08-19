@@ -272,7 +272,7 @@ export class DragDropDiv extends React.PureComponent {
         this.waitingMove = false;
     }
     render() {
-        let _a = this.props, { getRef, children, className, directDragT, onDragStartT, onDragMoveT, onDragEndT, onDragOverT, onDragLeaveT, onDropT, onGestureStartT, onGestureMoveT, onGestureEndT, useRightButtonDragT } = _a, others = __rest(_a, ["getRef", "children", "className", "directDragT", "onDragStartT", "onDragMoveT", "onDragEndT", "onDragOverT", "onDragLeaveT", "onDropT", "onGestureStartT", "onGestureMoveT", "onGestureEndT", "useRightButtonDragT"]);
+        let _a = this.props, { getRef, children, className, directDragT, onDragStartT, onDragMoveT, onDragEndT, onDragOverT, onDragLeaveT, onDropT, onGestureStartT, onGestureMoveT, onGestureEndT, useRightButtonDragT, tabClassName } = _a, others = __rest(_a, ["getRef", "children", "className", "directDragT", "onDragStartT", "onDragMoveT", "onDragEndT", "onDragOverT", "onDragLeaveT", "onDropT", "onGestureStartT", "onGestureMoveT", "onGestureEndT", "useRightButtonDragT", "tabClassName"]);
         let onTouchDown = this.onPointerDown;
         let onMouseDown = this.onPointerDown;
         if (!onDragStartT) {
@@ -283,10 +283,10 @@ export class DragDropDiv extends React.PureComponent {
         }
         if (onDragStartT || onGestureStartT) {
             if (className) {
-                className = `${className} drag-initiator`;
+                className = tabClassName?`${tabClassName} ${className} drag-initiator`:`${className} drag-initiator`;
             }
             else {
-                className = 'drag-initiator';
+                className = tabClassName?`${tabClassName} drag-initiator`:'drag-initiator';
             }
         }
         return (React.createElement("div", Object.assign({ ref: this._getRef, className: className }, others, { onMouseDown: onMouseDown, onTouchStart: onTouchDown }), children));

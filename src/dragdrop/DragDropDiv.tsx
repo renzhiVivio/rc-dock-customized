@@ -320,7 +320,7 @@ export class DragDropDiv extends React.PureComponent<DragDropDivProps, any> {
     let {
       getRef, children, className,
       directDragT, onDragStartT, onDragMoveT, onDragEndT, onDragOverT, onDragLeaveT, onDropT,
-      onGestureStartT, onGestureMoveT, onGestureEndT, useRightButtonDragT,
+      onGestureStartT, onGestureMoveT, onGestureEndT, useRightButtonDragT, tabClassName
       ...others
     } = this.props;
     let onTouchDown = this.onPointerDown;
@@ -333,9 +333,10 @@ export class DragDropDiv extends React.PureComponent<DragDropDivProps, any> {
     }
     if (onDragStartT || onGestureStartT) {
       if (className) {
-        className = `${className} drag-initiator`;
-      } else {
-        className = 'drag-initiator';
+        className = tabClassName ? `${tabClassName} ${className} drag-initiator` : `${className} drag-initiator`;
+      }
+      else {
+        className = tabClassName ? `${tabClassName} drag-initiator` : 'drag-initiator';
       }
     }
 

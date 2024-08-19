@@ -9,6 +9,7 @@ export declare class TabCache {
     data: TabData;
     context: DockContext;
     content: React.ReactElement;
+    tabClassName?: string;
     constructor(context: DockContext);
     setData(data: TabData): boolean;
     onCloseClick: (e: React.MouseEvent) => void;

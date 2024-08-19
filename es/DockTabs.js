@@ -134,7 +134,7 @@ export class TabCache {
         return e.clientX > midx ? 'after-tab' : 'before-tab';
     }
     render() {
-        let { id, title, content, closable, cached, parent } = this.data;
+        let { id, title, content, closable, cached, parent, tabClassName } = this.data;
         let { onDragStart, onDragOver, onDrop, onDragLeave } = this;
         if (parent.parent.mode === 'window') {
             onDragStart = null;
@@ -145,7 +145,7 @@ export class TabCache {
         if (typeof content === 'function') {
             content = content(this.data);
         }
-        let tab = (React.createElement(DragDropDiv, { getRef: this.getRef, onDragStartT: onDragStart, role: "tab", "aria-selected": parent.activeId === id, onDragOverT: onDragOver, onDropT: onDrop, onDragLeaveT: onDragLeave },
+        let tab = (React.createElement(DragDropDiv, { getRef: this.getRef, onDragStartT: onDragStart, role: "tab", "aria-selected": parent.activeId === id, onDragOverT: onDragOver, onDropT: onDrop, onDragLeaveT: onDragLeave, tabClassName },
             title,
             closable ?
                 React.createElement("div", { className: "dock-tab-close-btn", onClick: this.onCloseClick })
