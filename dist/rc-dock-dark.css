@@ -129,7 +129,7 @@ body > .dragging-layer > div:last-child {
 }
 .dock-tabpane:not(.dock-tabpane-active) {
   animation-name: dock-fadeOut;
-  animation-duration: 0.5s;
+  animation-duration: 0s;
 }
 @keyframes dock-fadeOut {
   from {
@@ -465,13 +465,13 @@ body.dock-dragging iframe {
 }
 .dock-mbox.dock-mbox-show {
   visibility: visible;
-  animation: dock-mbox-show 0.2s ease;
+  animation: dock-mbox-show 0s ease;
 }
 .dock-mbox.dock-mbox-hide {
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
-  animation: dock-mbox-hide 0.2s ease;
+  animation: dock-mbox-hide 0s ease;
 }
 @keyframes dock-mbox-show {
   from {
